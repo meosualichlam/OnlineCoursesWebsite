@@ -141,3 +141,9 @@ def search():
                            if current_user.is_authenticated else [])
     # same với cart
     return render_template('search.html')
+@views.route('/all-courses')
+def all_courses():
+    courses = Product.query.all()
+    return render_template('all_courses.html', courses=courses,
+                           cart=Cart.query.filter_by(customer_link=current_user.id).all()
+                           if current_user.is_authenticated else [])

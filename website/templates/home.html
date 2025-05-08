@@ -198,39 +198,41 @@
 <!-- Top khóa học bán chạy -->
 <div class="container my-5">
     <div class="text-center mb-4">
-        <h2>TOP KHÓA HỌC BÁN CHẠY</h2>
-        <p>Tổng hợp những khóa học bán chạy nhất trong tháng.</p>
+        <h4 class="fw-bold">TOP KHÓA HỌC BÁN CHẠY</h4>
+        <p class="text-muted">Tổng hợp những khóa học bán chạy nhất trong tháng.</p>
     </div>
-    <div class="container text-center mt-5">
-        <div class="row" style="margin: 8px; background-color: rgb(219, 218, 218);" id="column">
-    
-            {% for item in items %}
-            
-            <div class="col-md-3 mb-4" style="background-color: white;">
-                <img src="{{ item.product_picture }}" alt="{{ item.product_name }}" class="card-img-top" style="height: 202px; width: 180px; border-radius: 10px; object-fit: cover;">
-                
-                <div class="row" style="margin-top: 5px;">
-                    <h6 style="color: gray; font-weight: 600;">{{ item.product_name }}</h6>
-                </div>
-    
-                <div class="row" style="margin-top: 10px;">
-                    <div class="col">
-                        <h5 style="font-weight: 600; font-family: 'Times New Roman', Times, serif;">{{ item.current_price }} VNĐ</h5>
-                        {% if item.previous_price %}
-                            <strike><p style="color: gray;">{{ item.previous_price }} VNĐ</p></strike>
-                        {% endif %}
-                    </div>
-    
-                    <div class="col text-end">
-                        <a href="/add-to-cart/{{ item.id }}" class="btn btn-primary">Thêm vào giỏ hàng</a>
+
+    <div class="row g-3 justify-content-center">
+        {% for item in items %}
+        <div class="col-6 col-sm-6 col-md-4 col-lg-3">
+            <div class="card h-100 shadow-sm">
+                <img src="{{ item.product_picture }}" class="card-img-top" alt="{{ item.product_name }}" style="height: 160px; object-fit: cover; border-top-left-radius: .5rem; border-top-right-radius: .5rem;">
+                <div class="card-body d-flex flex-column">
+                    <h6 class="card-title text-truncate" title="{{ item.product_name }}">{{ item.product_name }}</h6>
+                    <div class="mt-auto">
+                        <div class="mb-2">
+                            <span class="text-danger fw-bold">{{ item.current_price }} VNĐ</span><br>
+                            {% if item.previous_price %}
+                            <small class="text-muted"><del>{{ item.previous_price }} VNĐ</del></small>
+                            {% endif %}
+                        </div>
+                        <a href="/add-to-cart/{{ item.id }}" class="btn btn-sm btn-outline-primary w-100 mb-1">
+                            <i class="bi bi-cart-plus"></i> Thêm giỏ hàng
+                        </a>
+                        <a href="/all-courses" class="btn btn-sm btn-secondary w-100">
+                            <i class="bi bi-info-circle"></i> Xem thông tin
+                        </a>
                     </div>
                 </div>
             </div>
-    
-            {% endfor %}
-            
         </div>
+        {% endfor %}
     </div>
+    <div class="text-center mt-4">
+        <a href="/all-courses" class="btn btn-secondary">Xem tất cả</a>
+    </div>
+</div>
+
 
     <!-- <div class="row row-cols-1 row-cols-md-4 g-4">
         <div class="col">
@@ -313,9 +315,5 @@
             </div>
         </div>
     </div> -->
-    <div class="text-center mt-4">
-        <a href="/all-courses" class="btn btn-secondary">Xem tất cả</a>
-    </div>
-</div>
 
 {% endblock %}
