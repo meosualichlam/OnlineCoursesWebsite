@@ -1,0 +1,411 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;  /* Sắp xếp các phần tử theo chiều dọc */
+}
+
+/* Nội dung chính */
+.content {
+  flex-grow: 1;  /* Làm cho phần này chiếm không gian còn lại */
+}
+
+.d-flex .btn{
+    background: orange;
+    border: 2px solid orange;
+    border-radius: 8px;
+    color: #fff;
+}
+.d-flex .btn:hover{
+    background: rgb(228, 150, 7);
+    border: 2px solid rgb(228, 150, 7);
+}
+
+#right1 :hover{
+    color: orange;
+    transition: 300ms;
+}
+
+.row .right2 {
+    margin-left: -10px;
+    height: 180px;
+    width: 180px;
+    border-radius: 10px;
+}
+
+.container .row .col .row .col a {
+    background-color: orange;
+    padding: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+
+}
+
+.container .row .col .row .col a :hover {
+    background-color: rgb(201, 132, 5);
+}
+#column :hover{
+    transform: scale(0.9);
+    transition: 450ms;
+    border-radius: 10px;
+}
+
+#items :hover {
+    color: orange;
+    transition: 200ms;
+}
+.dropdown-menu {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 200px;
+    width: auto;
+    margin: 0 10px;
+    z-index: 1000;
+}
+/* top-bar tuy chon */
+.top-bar {
+    background-color: #d3d3d3; /* Màu nền cho thanh điều hướng (màu xám) */
+    padding: 10px 0; /* Khoảng cách bên trong */
+}
+
+.top-bar .nav-link {
+    color: #333; /* Màu chữ */
+    font-weight: bold; /* Làm đậm chữ */
+}
+
+.top-bar .nav-link:hover {
+    color: orange; /* Thay đổi màu khi hover */
+}
+
+.top-bar .dropdown-menu {
+    background-color: #fff; /* Màu nền cho dropdown */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: all 0.3s ease; /* Thêm hiệu ứng chuyển động */
+
+}
+
+.top-bar .dropdown.show .dropdown-menu {
+    opacity: 1; /* Đặt độ mờ thành 1 khi dropdown hiển thị */
+    visibility: visible; /* Hiển thị dropdown */
+    transform: translateY(0); /* Đưa dropdown về vị trí ban đầu */
+}
+
+.top-bar .dropdown-item {
+    color: #333; /* Màu chữ cho các mục trong dropdown */
+}
+
+.top-bar .dropdown-item:hover {
+    background-color: orange; /* Màu nền khi hover trên các mục dropdown */
+    color: white; /* Màu chữ khi hover */
+}
+/* footer */
+footer {
+    background-color: #f8f9fa; /* Màu nền cho footer */
+    padding: 40px 0; /* Padding cho footer */
+    text-align: center;
+    width: 100%;                 /* Đảm bảo footer chiếm hết chiều rộng */
+    margin-top: auto;            /* Đẩy footer xuống đáy */
+}
+.footer-links a {
+    color: #6c757d; /* Màu chữ cho các liên kết */
+    text-decoration: none; /* Bỏ gạch chân */
+    font-size: 1rem; /* Kích thước chữ cho các liên kết */
+}
+.footer-links a:hover {
+    text-decoration: underline; /* Gạch chân khi hover */
+}
+.social-icons a {
+    color: #6c757d; /* Màu chữ cho các biểu tượng mạng xã hội */
+    margin: 0 10px; /* Khoảng cách giữa các biểu tượng */
+    font-size: 1.5rem; /* Kích thước biểu tượng */
+}
+.card {
+    background-color: white;         /* Màu nền của card */
+    border-radius: 10px;            /* Bo tròn các góc */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Đổ bóng cho card */
+    padding: 20px;                   /* Khoảng cách bên trong */
+    margin: 0 20px;                
+    max-width: 500px;                /* Độ rộng tối đa */
+    text-align: left;              /* Canh giữa nội dung */
+}
+
+.card-header {
+    text-align: center;
+    font-size: 1.5em;                /* Kích thước chữ cho tiêu đề */
+    margin-bottom: 10px;             /* Khoảng cách dưới tiêu đề */
+    font-weight: bold;
+}
+
+.card-content {
+    font-size: 1em;                  /* Kích thước chữ cho nội dung */
+    color: #333;                     /* Màu chữ */
+}
+
+/* test */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-color: rgba(99, 91, 157, 1);
+    font-family: Arial, sans-serif; /* Đặt font-family là Arial */
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  h1, p {
+    color: #fff;
+  }
+  
+  .login-title {
+    font-weight: 700;
+    font-size: 36px;
+    margin-bottom: 23px;
+  }
+  
+  .input-group {
+    margin-bottom: 20px;
+  }
+  
+  .input-label {
+    font-weight: 700;
+    font-size: 18px;
+    color: #fff;
+  }
+  
+  .input-field {
+    border-bottom: 2px solid #fff;
+    height: 40px; /* Thay đổi chiều cao nếu cần */
+  }
+  
+  .forgot-password {
+    color: #fff;
+    margin: 10px 0;
+  }
+  
+  .login-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 169px;
+    background-color: #fff;
+    border-radius: 10px;
+    margin: 20px 0;
+  }
+  
+  .login-button-text {
+    font-weight: 700;
+    font-size: 24px;
+    color: rgba(137, 136, 136, 1);
+  }
+  
+  .register-prompt {
+    color: #fff;
+    text-align: center;
+  }
+  
+  @media (max-width: 1440px) {
+    .login-container {
+      padding: 0 24px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .login-container {
+      padding: 0 16px;
+    }
+  }
+  
+  .login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 23px;
+    padding: 50px;
+    backdrop-filter: blur(30px);
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+  }
+  .row.d-flex {
+    display: flex;
+    justify-content: space-between; /* Căn đều giữa các phần tử */
+    align-items: stretch; /* Cả hai phần tử trong row sẽ có chiều cao bằng nhau */
+}
+.container-custom {
+  padding: 20px;
+  max-width: 1200px;  /* Giới hạn chiều rộng của container */
+  margin: 0 auto; /* Căn giữa container */
+  display: flex;  /* Sử dụng flexbox cho row */
+  justify-content: space-between; /* Đảm bảo khoảng cách giữa các phần tử */
+}
+
+
+  /* carousel */
+  /* Cố định chiều cao của carousel */
+.carousel-inner {
+  max-width: 100%; 
+  max-height: 100%;
+    margin: auto; 
+}
+
+/* Đảm bảo mỗi slide trong carousel có kích thước đồng nhất */
+.carousel-item {
+  height: 500px; /* Kích thước slide chiếm toàn bộ chiều cao của carousel */
+}
+
+/* Đảm bảo hình ảnh trong carousel không bị kéo giãn */
+.carousel-item img {
+  object-fit: cover; 
+  width: 100%; /* Kéo dài hình ảnh theo chiều ngang */
+  height: 100%; /* Đảm bảo hình ảnh có chiều cao đầy đủ */
+}
+.carousel-caption {
+  position: absolute;
+  bottom: 0; /* Đặt vị trí của dòng chữ ở dưới cùng */
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)); /* Gradient mờ từ dưới lên */
+  color: white; /* Màu chữ trắng */
+  padding: 20px; /* Thêm khoảng cách cho văn bản */
+  text-align: center;
+}
+/* CSS cho card nổi */
+.card.shadow-lg {
+  width: 100%; /* Đảm bảo card chiếm toàn bộ chiều ngang */
+  max-width: 900px; /* Giới hạn chiều rộng tối đa của card */
+  margin: 0 auto; /* Căn giữa card */
+  border-radius: 10px; /* Bo góc cho card */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng cho card tạo hiệu ứng nổi */
+  background-color: #fdfd96; 
+  border: 2px solid #97c8e7; 
+  padding: 10px; 
+  min-height: 180px; /* Đảm bảo card có chiều cao tối thiểu */
+  display: flex; /* Dùng flexbox để căn chỉnh nội dung */
+  flex-direction: column;
+  justify-content: space-between; /* Căn đều các phần tử trong card */
+}
+.card-header h5 {
+  font-weight: bold;
+  color: #333;
+  font-size: 1.25rem;
+}
+
+.card-body p {
+  font-size: 1.2rem; /* Giảm kích thước chữ để phù hợp */
+  color: #333;
+  text-align: center;
+}
+
+/* Phần container trải rộng hết màn hình */
+.full-width-container {
+  max-width: 100%;
+  margin: 0 auto; /* Căn giữa */
+  padding: 40px 20px; /* Thêm khoảng cách bên trong */
+  background-color: #f9f9f9; /* Màu nền */
+}
+
+/* Tiêu đề "Vì sao chọn chúng tôi?" */
+.full-width-container h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Đoạn mô tả dưới tiêu đề */
+.full-width-container p {
+  font-size: 1rem;
+  color: #6c757d;
+  margin-bottom: 40px;
+}
+
+/* Điều chỉnh layout cho các mục */
+.row.justify-content-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Card tùy chỉnh */
+.full-width-card {
+  border-radius: 10px; /* Bo góc cho card */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng cho card */
+  background-color: #ffffff; /* Màu nền */
+  padding: 20px;
+  text-align: center; /* Căn giữa nội dung */
+  flex: 1; /* Mỗi card chiếm không gian đều */
+  height: 100%; /* Chiều cao của card tự động điều chỉnh */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng hover */
+}
+
+/* Thêm hiệu ứng hover cho card */
+.full-width-card:hover {
+  transform: scale(1.05); /* Phóng to card khi hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Tăng độ bóng khi hover */
+}
+
+/* Tiêu đề trong card */
+.full-width-card .card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Mô tả trong card */
+.full-width-card .card-text {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+/* Điều chỉnh layout cho các màn hình nhỏ */
+@media (max-width: 768px) {
+  .row.justify-content-between {
+      flex-direction: column; /* Đổi layout thành cột trên màn hình nhỏ */
+      align-items: center; /* Căn giữa các mục */
+  }
+  
+  .full-width-card {
+      margin-bottom: 30px; /* Khoảng cách dưới các card */
+  }
+}
+/* Định nghĩa chiều cao và chiều rộng cố định cho card */
+/* /* Đảm bảo các card có cùng kích thước */
+#column .col {
+  height: 400px; /* Cố định chiều cao của card */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Đảm bảo hình ảnh trong card có kích thước đồng nhất */
+.card-img-top {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Tùy chỉnh đường viền của card */
+.product-card {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+/* Nút "Xem tất cả" */
+.btn-secondary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-secondary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}

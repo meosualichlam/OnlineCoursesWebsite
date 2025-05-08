@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #a8d0e6; /* Nền xanh pastel */
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    font-family: 'Arial', sans-serif; /* Font hỗ trợ tiếng Việt */
+    color: #333; /* Màu chữ tối để dễ đọc */
+    font-size: 14px; /* Giảm kích thước font chữ */
+}
+
+/* Căn giữa nội dung */
+.base .base-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+}
+
+/* Định dạng form */
+.base .base-content .form {
+    max-height: 700px;
+    width: 300px;
+    background: rgba(0, 0, 0, 0.521); /* Nền mờ để chữ dễ nhìn */
+    border: 1px solid #FF723A;
+    border-radius: 10px;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Tiêu đề form */
+.base .base-content .form h3 {
+    margin: 10px;
+    color: #14b7f2;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font chữ mới cho tiêu đề */
+    font-size: 25px;
+    font-weight: bold;
+}
+
+/* Đường kẻ giữa các phần trong form */
+.base .base-content .form hr {
+    width: 88%;
+    margin-top: 30px;
+    margin-left: 20px;
+    background-color: #FF723A;
+}
+
+/* Khoảng cách đường kẻ trong form */
+#base-signup .base-content .form hr {
+    margin-top: 2px;
+}
+
+/* Định dạng input */
+.base .base-content .form input {
+    margin-top: 5px;
+    background: none;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 17px;
+}
+
+/* Các trường email, password, name */
+.base .base-content .email,
+.base .base-content .password,
+.base .base-content .name {
+    margin-top: 3px;
+    font-size: 22px;
+    font-weight: 500;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* Các nút và liên kết trong form */
+.base .base-content .form .buttons input,
+.base .base-content .form .buttons a {
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 20px; /* Điều chỉnh kích thước font chữ */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font chữ cho button */
+    font-weight: 600; /* Làm đậm chữ trên button */
+    padding: 5px 15px; /* Tăng khoảng cách padding để button nhìn to hơn */
+    text-decoration: none;
+    color: #fff; /* Màu chữ trắng */
+    background: #14b7f2;
+    border: 2px solid #14a7dc ; /* Đường viền xanh lá */
+    border-radius: 15px; /* Bo tròn góc của button */
+    transition: all 0.3s ease; /* Hiệu ứng khi hover */
+}
+
+/* Hiệu ứng hover cho nút */
+.base .base-content .form .buttons input:hover,
+.base .base-content .form .buttons a:hover {
+    background: transparent;
+    border: 1px solid #fff;
+}
+.base .base-content .form .buttons {
+    display: flex; /* Sử dụng flexbox để căn giữa và giữ các nút trong cùng một hàng */
+    justify-content: center; /* Căn giữa các nút */
+    gap: 10px; /* Khoảng cách giữa các nút */
+    margin-top: 20px; /* Thêm khoảng cách từ trên xuống */
+    margin-bottom: 30px; /* Thêm khoảng cách từ dưới lên */
+}

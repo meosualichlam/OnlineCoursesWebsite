@@ -1,0 +1,321 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block body %}
+<!-- Top bar -->
+<div class="top-bar">
+    <div class="container-fluid">
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Nâng cấp hội viên</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Combo</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Khóa học miễn phí</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Hướng dẫn</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Blog</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="priceFilterDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Lọc theo giá
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="priceFilterDropdown">
+                    <li><a class="dropdown-item" href="#">Dưới 50.000 VNĐ</a></li>
+                    <li><a class="dropdown-item" href="#">50.000 - 100.000 VNĐ</a></li>
+                    <li><a class="dropdown-item" href="#">100.000 - 200.000 VNĐ</a></li>
+                    <li><a class="dropdown-item" href="#">Trên 200.000 VNĐ</a></li>
+                </ul>
+            </li>
+            <!-- Sắp xếp dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="orderFilterDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Sắp xếp
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="orderFilterDropdown">
+                    <li><a class="dropdown-item" href="#">Mới nhất</a></li>
+                    <li><a class="dropdown-item" href="#">Từ thấp đến cao</a></li>
+                    <li><a class="dropdown-item" href="#">Từ cao xuống thấp</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- Row cho Carousel và Card khóa học -->
+<div class="container-custom">
+    <div class="row d-flex">
+        <!-- Card danh mục khóa học -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Danh mục khóa học</h5>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Ads</li>
+                            <li class="list-group-item">SEO</li>
+                            <li class="list-group-item">Shopee</li>
+                            <li class="list-group-item">TikTok</li>
+                            <li class="list-group-item">Tài chính - Kết toán</li>
+                            <li class="list-group-item">Phòng The</li>
+                            <li class="list-group-item">Phong Thủy</li>
+                            <li class="list-group-item">Dựng video</li>
+                        </ul>
+                    </div>
+                    <div class="col-6">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Lập trình WEB</li>
+                            <li class="list-group-item">Copy Writing</li>
+                            <li class="list-group-item">Data Analysis</li>
+                            <li class="list-group-item">Bất động sản</li>
+                            <li class="list-group-item">Kiếm tiền online</li>
+                            <li class="list-group-item">Tin học văn phòng</li>
+                            <li class="list-group-item">Đồ họa thiết kế</li>
+                            <li class="list-group-item">Kinh doanh - Marketing</li>
+                            <li class="list-group-item">Tiếng Trung - Nhật - Hàn</li>
+                            <li class="list-group-item">Crypto - Forex - Chứng khoán </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carousel (Slider) nằm bên phải -->
+        <div class="col-md-8 mb-4">
+            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://aimacademy.vn/wp-content/uploads/2023/11/45229-374-Thumb-Post-Lo-Trinh-Tu-Hoc-Marketing-Co-Ban.jpg" class="d-block w-100" alt="Khóa học Marketing Online">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Khóa Học Marketing Online</h5>
+                            <p>Giới thiệu cách thức marketing trên nền tảng trực tuyến để tối ưu hóa hiệu quả kinh doanh.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://i.ytimg.com/vi/CQqBQVH5PcI/maxresdefault.jpg" class="d-block w-100" alt="Khóa học AI và Machine Learning">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Khóa Học AI và Machine Learning</h5>
+                            <p>Khóa học chi tiết về AI và cách thức áp dụng Machine Learning vào trong các dự án thực tế.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://vtiacademy.edu.vn/upload/images/lap-trinh-web.jpg" class="d-block w-100" alt="Khóa học Lập Trình Web">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Khóa Học Lập Trình Web</h5>
+                            <p>Khóa học này giúp bạn học lập trình web từ cơ bản đến nâng cao, phù hợp với mọi đối tượng.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            <div class="container-fluid mt-4">
+                <div class="card shadow-lg mb-4 mx-auto" style="max-width: 1200px; background-color: #fdfd96; border: 2px solid #97c8e7;">
+                    <div class="card-header">
+                        <h5>KHO KHÓA HỌC - SHARE HƠN 5000 KHÓA HỌC ONLINE</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>Tổng kho khóa học online lớn nhất hiện nay, uy tín, chất lượng và nhanh chóng. Chúng tôi liên tục cập nhật các khóa học mới đáp ứng nhu cầu của các bạn.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="full-width-container py-5">
+    <div class="text-center">
+        <h2>Vì sao chọn chúng tôi?</h2>
+        <p class="text-muted">Chúng tôi luôn cố gắng mang lại những dịch vụ tốt nhất cho bạn.</p>
+    </div>
+    <!-- Các mục bên dưới -->
+    <div class="row justify-content-between">
+        <!-- Mục 1 -->
+        <div class="col-md-3 mb-4">
+            <div class="card full-width-card shadow-sm">
+                <div class="card-body text-center">
+                    <i class="bi bi-bar-chart-line" style="font-size: 3rem; color: #17a2b8;"></i>
+                    <h5 class="card-title">Uy tín chất lượng</h5>
+                    <p class="card-text">Hoàn tiền nếu khóa học không như mô tả</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mục 2 -->
+        <div class="col-md-3 mb-4">
+            <div class="card full-width-card shadow-sm">
+                <div class="card-body text-center">
+                    <i class="bi bi-clock" style="font-size: 3rem; color: #28a745;"></i>
+                    <h5 class="card-title">Kích hoạt nhanh</h5>
+                    <p class="card-text">Kích hoạt khóa học tự động</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mục 3 -->
+        <div class="col-md-3 mb-4">
+            <div class="card full-width-card shadow-sm">
+                <div class="card-body text-center">
+                    <i class="bi bi-arrow-repeat" style="font-size: 3rem; color: #ffc107;"></i>
+                    <h5 class="card-title">Update liên tục</h5>
+                    <p class="card-text">Cập nhật 7-15 khóa học mới hằng tuần</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mục 4 -->
+        <div class="col-md-3 mb-4">
+            <div class="card full-width-card shadow-sm">
+                <div class="card-body text-center">
+                    <i class="bi bi-laptop" style="font-size: 3rem; color: #007bff;"></i>
+                    <h5 class="card-title">Học online tiện lợi</h5>
+                    <p class="card-text">Học online bằng điện thoại hoặc máy tính</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Top khóa học bán chạy -->
+<div class="container my-5">
+    <div class="text-center mb-4">
+        <h2>TOP KHÓA HỌC BÁN CHẠY</h2>
+        <p>Tổng hợp những khóa học bán chạy nhất trong tháng.</p>
+    </div>
+    <div class="container text-center mt-5">
+        <div class="row" style="margin: 8px; background-color: rgb(219, 218, 218);" id="column">
+    
+            {% for item in items %}
+            
+            <div class="col-md-3 mb-4" style="background-color: white;">
+                <img src="{{ item.product_picture }}" alt="{{ item.product_name }}" class="card-img-top" style="height: 202px; width: 180px; border-radius: 10px; object-fit: cover;">
+                
+                <div class="row" style="margin-top: 5px;">
+                    <h6 style="color: gray; font-weight: 600;">{{ item.product_name }}</h6>
+                </div>
+    
+                <div class="row" style="margin-top: 10px;">
+                    <div class="col">
+                        <h5 style="font-weight: 600; font-family: 'Times New Roman', Times, serif;">{{ item.current_price }} VNĐ</h5>
+                        {% if item.previous_price %}
+                            <strike><p style="color: gray;">{{ item.previous_price }} VNĐ</p></strike>
+                        {% endif %}
+                    </div>
+    
+                    <div class="col text-end">
+                        <a href="/add-to-cart/{{ item.id }}" class="btn btn-primary">Thêm vào giỏ hàng</a>
+                    </div>
+                </div>
+            </div>
+    
+            {% endfor %}
+            
+        </div>
+    </div>
+
+    <!-- <div class="row row-cols-1 row-cols-md-4 g-4">
+        <div class="col">
+            <div class="card product-card">
+                <img src="https://khokhoahoc.org/wp-content/uploads/2023/03/Share-Khoa-Hoc-Kiem-Tien-Voi-Top-Cong-Cu-AI-Hot-Nhat-Hien-Nay-510x287.png" class="card-img-top" alt="Khóa học 1">
+                <div class="card-body">
+                    <h5 class="card-title">Khóa Học Kiếm Tiền Với Top Công Cụ AI Hot Nhất Hiện Nay</h5>
+                    <p class="card-text text-muted">500,000 VNĐ</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card product-card">
+                <img src="https://khokhoahoc.org/wp-content/uploads/2023/05/Chia-Se-Khoa-Hoc-Kinh-Te-Vi-Mo-MAI-AFA-510x287.png" class="card-img-top" alt="Khóa học 2">
+                <div class="card-body">
+                    <h5 class="card-title">Khóa Học Kinh Tế Vĩ Mô Ứng Dụng Trong Đầu Tư (MAI) AFA</h5>
+                    <p class="card-text text-muted">750,000 VNĐ</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card product-card">
+                <img src="https://khokhoahoc.org/wp-content/uploads/2023/05/2-510x287.png" class="card-img-top" alt="Khóa học 3">
+                <div class="card-body">
+                    <h5 class="card-title">Khóa Học Vẽ Tranh Bằng AI Midjourney – Ứng Dụng Trong Cuộc Sống</h5>
+                    <p class="card-text text-muted">300,000 VNĐ</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card product-card">
+                <img src="https://khokhoahoc.org/wp-content/uploads/2023/03/Share-Combo-2-Lop-Hoc-Co-Ban-Den-Nang-Cao-Lam-Chu-ChatGPT-va-AI-Thuc-Chien-HocvienAI-510x265.png" class="card-img-top" alt="Khóa học 4">
+                <div class="card-body">
+                    <h5 class="card-title">Combo 2 Lớp Học Cơ Bản Đến Nâng Cao – Làm Chủ ChatGPT và AI Thực Chiến HocvienAI</h5>
+                    <p class="card-text text-muted">600,000 VNĐ</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card product-card">
+                <img src="https://khokhoahoc.org/wp-content/uploads/2023/05/Share-Khoa-Hoc-Cfa-Level-2-Online-Cua-Hedge-Academy-Tang-Khoa-Cfa-Level-1-510x510.png" class="card-img-top" alt="Khóa học 5">
+                <div class="card-body">
+                    <h5 class="card-title">Share Khóa Học Cfa Level 2 Online Cùng Hedge Academy (Tặng Khóa Cfa Level 1)</h5>
+                    <p class="card-text text-muted">800,000 VNĐ</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card product-card">
+                <img src="https://hoanghamobile.com/tin-tuc/wp-content/uploads/2024/02/python-online.jpg" class="card-img-top" alt="Khóa học 6">
+                <div class="card-body">
+                    <h5 class="card-title">Khóa Học Lập Trình Python trong phát triển ứng dụng và phân tích dữ liệu</h5>
+                    <p class="card-tex text-muted">450,000 VNĐ</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card product-card">
+                <img src="https://khokhoahoc.org/wp-content/uploads/2022/11/Share-Khoa-SEO-Blueprint-Cua-GTVSEO-510x287.png" class="card-img-top" alt="Khóa học 6">
+                <div class="card-body">
+                    <h5 class="card-title">Khóa SEO Blueprint Của GTVSEO</h5>
+                    <p class="card-tex text-muted">250,000 VNĐ</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card product-card">
+                <img src="https://khokhoahoc.org/wp-content/uploads/2024/06/Share-Khoa-Hoc-Money-Hacker-Club-Moi-Nhat-Cung-Hoang-Nam-MMO-510x287.png" class="card-img-top" alt="Khóa học 6">
+                <div class="card-body">
+                    <h5 class="card-title">Khóa Học Money Hacker Club Mới Nhất Cùng Hoàng Nam MMO</h5>
+                    <p class="card-tex text-muted">350,000 VNĐ</p>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div class="text-center mt-4">
+        <a href="/all-courses" class="btn btn-secondary">Xem tất cả</a>
+    </div>
+</div>
+
+{% endblock %}
