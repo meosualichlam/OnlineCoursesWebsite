@@ -3,7 +3,6 @@
 {% block title %} Home {% endblock %}
 
 {% block body %}
-<!-- Top bar -->
 <div class="top-bar">
     <div class="container-fluid">
         <ul class="nav justify-content-center">
@@ -14,7 +13,7 @@
                 <a class="nav-link" href="#">Combo</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Khóa học miễn phí</a>
+                <a class="nav-link" href="/all-courses">Tất cả khóa học</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Hướng dẫn</a>
@@ -26,11 +25,11 @@
                 <a class="nav-link dropdown-toggle" href="#" id="priceFilterDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Lọc theo giá
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="priceFilterDropdown">
-                    <li><a class="dropdown-item" href="#">Dưới 50.000 VNĐ</a></li>
-                    <li><a class="dropdown-item" href="#">50.000 - 100.000 VNĐ</a></li>
-                    <li><a class="dropdown-item" href="#">100.000 - 200.000 VNĐ</a></li>
-                    <li><a class="dropdown-item" href="#">Trên 200.000 VNĐ</a></li>
+               <ul class="dropdown-menu" aria-labelledby="priceFilterDropdown">
+                    <li><a class="dropdown-item" href="{{ url_for('views.all_courses', price='lt50') }}">Dưới 50.000 VNĐ</a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('views.all_courses', price='50-100') }}">50.000 - 100.000 VNĐ</a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('views.all_courses', price='100-200') }}">100.000 - 200.000 VNĐ</a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('views.all_courses', price='gt200') }}">Trên 200.000 VNĐ</a></li>
                 </ul>
             </li>
             <!-- Sắp xếp dropdown -->
@@ -39,9 +38,9 @@
                     Sắp xếp
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="orderFilterDropdown">
-                    <li><a class="dropdown-item" href="#">Mới nhất</a></li>
-                    <li><a class="dropdown-item" href="#">Từ thấp đến cao</a></li>
-                    <li><a class="dropdown-item" href="#">Từ cao xuống thấp</a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('views.all_courses', sort='newest') }}">Mới nhất</a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('views.all_courses', sort='asc') }}">Từ thấp đến cao</a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('views.all_courses', sort='desc') }}">Từ cao xuống thấp</a></li>
                 </ul>
             </li>
         </ul>
@@ -282,7 +281,7 @@
 
 .chatbot-window {
     width: 350px;
-    height: 500px;
+    height: 530px;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);

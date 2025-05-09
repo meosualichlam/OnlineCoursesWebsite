@@ -40,7 +40,22 @@
             <td>
                 <a href="/update-item/{{ item.id }}" style="text-decoration: none;">Update</a>
                 <br>
-                <a href="/delete-item/{{ item.id }}" style="text-decoration: none;">Delete</a>
+                <a href="/delete-item/{{ item.id }}" style="text-decoration: none;" onclick="confirmDelete({{ item.id }})">Delete</a>
+
+                <script>
+                    function confirmDelete(itemId) {
+                        // Sử dụng JavaScript confirm box để xác nhận
+                        const userConfirmed = confirm("Bạn chắc chắn muốn xóa khóa học này?");
+
+                        if (userConfirmed) {
+                            // Nếu người dùng xác nhận, thực hiện hành động xóa
+                            window.location.href = '/delete-item/' + itemId;
+                        } else {
+                            // Nếu người dùng hủy, không làm gì cả
+                            alert("Xóa đã bị hủy.");
+                        }
+                    }
+                </script>
             </td>
 
         </tr>

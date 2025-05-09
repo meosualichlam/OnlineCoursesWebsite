@@ -3,6 +3,51 @@
 {% block title %}Orders{% endblock %}
 
 {% block body %}
+
+<div class="top-bar">
+    <div class="container-fluid">
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Nâng cấp hội viên</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Combo</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/all-courses">Tất cả khóa học</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Hướng dẫn</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Blog</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="priceFilterDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Lọc theo giá
+                </a>
+               <ul class="dropdown-menu" aria-labelledby="priceFilterDropdown">
+                    <li><a class="dropdown-item" href="{{ url_for('views.all_courses', price='lt50') }}">Dưới 50.000 VNĐ</a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('views.all_courses', price='50-100') }}">50.000 - 100.000 VNĐ</a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('views.all_courses', price='100-200') }}">100.000 - 200.000 VNĐ</a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('views.all_courses', price='gt200') }}">Trên 200.000 VNĐ</a></li>
+                </ul>
+            </li>
+            <!-- Sắp xếp dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="orderFilterDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Sắp xếp
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="orderFilterDropdown">
+                    <li><a class="dropdown-item" href="{{ url_for('views.all_courses', sort='newest') }}">Mới nhất</a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('views.all_courses', sort='asc') }}">Từ thấp đến cao</a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('views.all_courses', sort='desc') }}">Từ cao xuống thấp</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
 <div class="container-fluid py-5" style="background-color: #63b1f0;">
     <div class="row justify-content-center">
         {% if orders %}

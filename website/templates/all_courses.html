@@ -13,7 +13,7 @@
                 <a class="nav-link" href="#">Combo</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Khóa học miễn phí</a>
+                <a class="nav-link" href="/all-courses">Tất cả khóa học</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Hướng dẫn</a>
@@ -63,6 +63,10 @@
                         <span class="badge bg-warning text-dark mb-2">Flash Sale</span>
                     {% endif %}
                     <a href="/add-to-cart/{{ course.id }}" class="btn btn-primary mt-auto"><i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ hàng</a>
+                    <br>
+                      <a href="/course-detail/{{ course.id }}" class="btn btn-primary mt-auto">
+                            <i class="bi bi-info-circle"></i> Xem thông tin
+                        </a>
                 </div>
             </div>
         </div>

@@ -12,9 +12,10 @@ views = Blueprint('views',__name__)
 
 @views.route('/')
 def home():
-    items = Product.query.filter_by(flash_sale=True)
-    return render_template('home.html',items=items, cart=Cart.query.filter_by(customer_link=current_user.id).all()
-                           if current_user.is_authenticated else[])
+    items = Product.query.filter_by(flash_sale=True).all()  # Thêm .all() để lấy tất cả các sản phẩm
+    return render_template('home.html', items=items, cart=Cart.query.filter_by(customer_link=current_user.id).all()
+                           if current_user.is_authenticated else [])
+
 
 @views.route('/add-to-cart/<int:item_id>')
 @login_required
@@ -208,6 +209,8 @@ def chatbot():
         reply = "Để mua khóa học, hãy thêm khóa học vào giỏ hàng (sử dụng nút 'Thêm giỏ hàng') và chọn 'Place Order' để thanh toán qua M-Pesa. Nếu cần hỗ trợ thanh toán, hãy cho tôi biết!"
     elif any(keyword in user_message for keyword in ['liên hệ', 'contact', 'email', 'phone']):
         reply = "Bạn có thể liên hệ với chúng tôi qua email: linhtrb0412@gmail.com hoặc gọi số hỗ trợ (giả định: 0909 123 456). Hãy cho tôi biết nếu bạn cần thêm thông tin!"
+    elif any(keyword in user_message for keyword in ['Cảm ơn', 'thanks', 'yêu bạn', 'đẹp']):
+        reply = "Tôi cũng yêu bạn. Hãy cho tôi biết nếu bạn cần thêm thông tin!"
     else:
         reply = "Xin lỗi, tôi chưa hiểu ý bạn. Bạn có thể nói rõ hơn không? Dưới đây là một số gợi ý: hỏi về khóa học, giá cả, cách mua hàng, hỗ trợ, hoặc chào hỏi!"
 

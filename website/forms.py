@@ -33,7 +33,7 @@ class ShopItemsForm(FlaskForm):
     flash_sale = BooleanField('Flash Sale')
     description = TextAreaField('Mô tả khóa học', validators=[DataRequired()])  # Mô tả khóa học giờ là của Product
     duration = StringField('Thời lượng', validators=[DataRequired()])  # Thời lượng là của Product
-    video = StringField('Video học thử (URL)', validators=[DataRequired()])  # Video học thử là của Product
+    video_url = StringField('Video học thử (URL)', validators=[DataRequired()])  # Video học thử là của Product
 
     add_product = SubmitField('Thêm khóa học')
     update_product = SubmitField('Cập nhật')

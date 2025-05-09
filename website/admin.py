@@ -23,7 +23,7 @@ def add_shop_items():
             previous_price = form.previous_price.data
             flash_sale = form.flash_sale.data
             description = form.description.data  # Lấy mô tả khóa học
-            video_url = form.video.data  # Lấy video học thử
+            video_url = form.video_url.data  # Lấy video học thử
             duration = form.duration.data  # Lấy thời gian khóa học
 
             file = form.product_picture.data
@@ -46,8 +46,8 @@ def add_shop_items():
                 db.session.commit()
                 flash(f'{product_name} đã được thêm thành công!')
                 print('Khóa học được thêm')
-                return render_template('add-shop-items.html',form=form)
-                # return redirect('/shop-items')
+                # return render_template('add-shop-items.html',form=form)
+                return redirect('/shop-items')
             except Exception as e:
                 print(e)
                 flash('Khóa học chưa được thêm')
@@ -72,18 +72,13 @@ def update_item(item_id):
         # Lấy sản phẩm cần cập nhật
         item_to_update = Product.query.get(item_id)
 
-        if not item_to_update:
-            flash('Sản phẩm không tồn tại!')
-            return redirect('/shop-items')
-
-        # Điền các giá trị hiện tại vào form
-        form.product_name.data = item_to_update.product_name
-        form.previous_price.data = item_to_update.previous_price
-        form.current_price.data = item_to_update.current_price
-        form.flash_sale.data = item_to_update.flash_sale
-        form.description.data = item_to_update.description
-        form.duration.data = item_to_update.duration
-        form.video.data = item_to_update.video_url
+        form.product_name.render_kw = {'placeholder': item_to_update.product_name}
+        form.previous_price.render_kw = {'placeholder': item_to_update.previous_price}
+        form.current_price.render_kw = {'placeholder': item_to_update.current_price}
+        form.flash_sale.render_kw = {'placeholder': item_to_update.flash_sale}
+        form.description.render_kw = {'placeholder': item_to_update.description}
+        form.duration.render_kw = {'placeholder': item_to_update.duration}
+        form.video_url.render_kw = {'placeholder': item_to_update.video_url}
 
         if form.validate_on_submit():
             # Lấy các giá trị từ form
@@ -92,39 +87,32 @@ def update_item(item_id):
             previous_price = form.previous_price.data
             flash_sale = form.flash_sale.data
             description = form.description.data
-            video_url = form.video.data
+            video_url = form.video_url.data
             duration = form.duration.data
 
             file = form.product_picture.data
+            file_name = secure_filename(file.filename)
+            file_path = f'./media/{file_name}'
+            file.save(file_path)
 
-            # Kiểm tra nếu có hình ảnh mới được tải lên
-            if file:
-                file_name = secure_filename(file.filename)
-                file_path = f'./media/{file_name}'
-                file.save(file_path)
-            else:
-                file_path = item_to_update.product_picture
             try:
-                # Cập nhật thông tin trong bảng Product
-                product_update = Product.query.filter_by(id=item_id).first()
-                product_update.product_name = product_name
-                product_update.current_price = current_price
-                product_update.previous_price = previous_price
-                product_update.flash_sale = flash_sale
-                product_update.product_picture = file_path
-                product_update.description = description  # Cập nhật mô tả
-                product_update.duration = duration  # Cập nhật thời gian
-                product_update.video_url = video_url  # Cập nhật video
-                # Lưu thay đổi vào cơ sở dữ liệu
+                Product.query.filter_by(id=item_id).update(dict(product_name=product_name,
+                                                                current_price=current_price,
+                                                                previous_price=previous_price,
+                                                                flash_sale=flash_sale,
+                                                                description=description,
+                                                                duration=duration,
+                                                                video_url=video_url,
+                                                                product_picture=file_path))
+
                 db.session.commit()
-                flash(f'{product_name} cập nhật thành công!', 'success')
-                print('Khóa học được cập nhật thành công')
+                flash(f'{product_name} cập nhật thành công!')
+                print('Khóa học được cập nhật')
                 return redirect('/shop-items')
             except Exception as e:
                 print('Khóa học không được cập nhật', e)
-                flash(f'Khóa học {product_name} chưa được cập nhật!!!', 'error')
-        return render_template('update_item.html', form=form, item=item_to_update)
-
+                flash('Khóa học không được cập nhật!!!')
+        return render_template('update_item.html', form=form)
     return render_template('404.html')
 
 
