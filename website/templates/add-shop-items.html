@@ -1,39 +1,70 @@
 {% extends 'base.html' %}
 
-{% block title %} Add Courses {% endblock %}
-
+{% block title %} Thêm Khóa Học {% endblock %}
 
 {% block body %}
+<div class="container py-4">
+    <h2>Thêm Khóa Học</h2>
+    <form action="" method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <div class="row">
+            <div class="col-md-6">
+                <!-- Tên khóa học -->
+                <div class="mb-3">
+                    <label class="form-label">Tên Khóa Học</label>
+                    {{ form.product_name(class="form-control", placeholder="Nhập tên khóa học") }}
+                </div>
 
-<table class="table table-dark table-hover">
-    <thead>
-        <tr>
-            <th scope="col">Tên khóa học</th>
-            <th scope="col">Giá gốc</th>
-            <th scope="col">Giá hện tại</th>
-            <th scope="col">Ảnh minh họa</th>
-            <th scope="col">Flash Sale</th>
-            <th scope="col">Thêm</th>
+                <!-- Giá gốc -->
+                <div class="mb-3">
+                    <label class="form-label">Giá Gốc</label>
+                    {{ form.previous_price(class="form-control", placeholder="Nhập giá gốc") }}
+                </div>
 
-        </tr>
-    </thead>
+                <!-- Giá hiện tại -->
+                <div class="mb-3">
+                    <label class="form-label">Giá Hiện Tại</label>
+                    {{ form.current_price(class="form-control", placeholder="Nhập giá hiện tại") }}
+                </div>
 
-    <tbody>
-        <tr>
-            <form action="" method="POST", enctype="multipart/form-data">
-                {{ form.hidden_tag() }}
+                <!-- Ảnh minh họa -->
+                <div class="mb-3">
+                    <label class="form-label">Ảnh Minh Họa Khóa Học</label>
+                    {{ form.product_picture(class="form-control") }}
+                </div>
+            </div>
 
-                <td>{{ form.product_name }}</td>
-                <td>{{ form.previous_price }}</td>
-                <td>{{ form.current_price }}</td>
-<!--                <td>{{ form.in_stock }}</td>-->
-                <td>{{ form.product_picture() }}</td>
-                <td>{{ form.flash_sale }}</td>
-                <td>{{ form.add_product() }}</td>
-            </form>
-        </tr>
-    </tbody>
-</table>
+            <div class="col-md-6">
+                <!-- Flash Sale -->
+                <div class="mb-3">
+                    <label class="form-label">Flash Sale</label>
+                    {{ form.flash_sale(class="form-check-input") }}
+                </div>
 
+                <!-- Mô tả khóa học -->
+                <div class="mb-3">
+                    <label class="form-label">Mô Tả Khóa Học</label>
+                    {{ form.description(class="form-control", placeholder="Mô tả khóa học") }}
+                </div>
 
+                <!-- Thời lượng -->
+                <div class="mb-3">
+                    <label class="form-label">Thời Lượng</label>
+                    {{ form.duration(class="form-control", placeholder="Thời gian khóa học") }}
+                </div>
+
+                <!-- Video học thử -->
+                <div class="mb-3">
+                    <label class="form-label">Video Học Thử (URL)</label>
+                    {{ form.video(class="form-control", placeholder="Nhập URL video học thử") }}
+                </div>
+
+                <!-- Nút Thêm Khóa Học -->
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">{{ form.add_product() }}</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
 {% endblock %}

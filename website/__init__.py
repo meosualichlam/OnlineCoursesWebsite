@@ -4,8 +4,10 @@ from flask import Flask, render_template
 from flask_login import current_user, LoginManager
 from sqlalchemy.testing.pickleable import User
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate  # Import Migrate
 
 db = SQLAlchemy()
+migrate = Migrate()
 DB_NAME = "database.sqlite3"
 
 def create_database():
@@ -20,8 +22,10 @@ def create_app():
     login_manager.init_app(app)
     login_manager.login_view = 'auth.login'
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Tắt tính năng theo dõi thay đổi đối tượng SQLAlchemy (tiết kiệm bộ nhớ)
 
     db.init_app(app)
+    migrate.init_app(app, db)
 
     @app.errorhandler(404)
     def page_not_found(error):

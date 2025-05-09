@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, FloatField, PasswordField, EmailField, BooleanField, SubmitField, SubmitField, SelectField
+from wtforms import StringField, IntegerField, FloatField, PasswordField, EmailField, BooleanField, SubmitField, SubmitField, SelectField, TextAreaField
 from wtforms.validators import DataRequired, length, NumberRange
 from flask_wtf.file import FileField, FileRequired
 
@@ -29,9 +29,11 @@ class ShopItemsForm(FlaskForm):
     product_name = StringField('Tên khóa học', validators=[DataRequired()])
     current_price = FloatField('Giá hiện tại', validators=[DataRequired()])
     previous_price = FloatField('Giá gốc', validators=[DataRequired()])
-    # in_stock = IntegerField('In Stock', validators=[DataRequired(), NumberRange(min=0)])
     product_picture = FileField('Ảnh minh họa khóa học', validators=[DataRequired()])
     flash_sale = BooleanField('Flash Sale')
+    description = TextAreaField('Mô tả khóa học', validators=[DataRequired()])  # Mô tả khóa học giờ là của Product
+    duration = StringField('Thời lượng', validators=[DataRequired()])  # Thời lượng là của Product
+    video = StringField('Video học thử (URL)', validators=[DataRequired()])  # Video học thử là của Product
 
     add_product = SubmitField('Thêm khóa học')
     update_product = SubmitField('Cập nhật')

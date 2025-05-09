@@ -141,9 +141,75 @@ def search():
                            if current_user.is_authenticated else [])
     # same với cart
     return render_template('search.html')
+
+@views.route('/course-detail/<int:item_id>')
+def course_detail(item_id):
+    # Lấy sản phẩm từ cơ sở dữ liệu
+    item = Product.query.get(item_id)
+
+    # Kiểm tra xem sản phẩm có tồn tại không
+    if item:
+        # Lấy các thông tin từ sản phẩm
+        description = item.description
+        duration = item.duration
+        video_url = item.video_url
+        return render_template('course_detail.html', item=item, description=description, duration=duration, video_url=video_url)
+    else:
+        flash('Khóa học không tồn tại!')
+        return redirect('/')
+
 @views.route('/all-courses')
 def all_courses():
-    courses = Product.query.all()
+    # Lấy tham số lọc và sắp xếp từ query string
+    price_filter = request.args.get('price')
+    sort = request.args.get('sort')
+
+    query = Product.query
+
+    # Lọc theo giá
+    if price_filter == 'lt50':
+        query = query.filter(Product.current_price < 50000)
+    elif price_filter == '50-100':
+        query = query.filter(Product.current_price >= 50000, Product.current_price <= 100000)
+    elif price_filter == '100-200':
+        query = query.filter(Product.current_price > 100000, Product.current_price <= 200000)
+    elif price_filter == 'gt200':
+        query = query.filter(Product.current_price > 200000)
+
+    # Sắp xếp
+    if sort == 'newest':
+        query = query.order_by(Product.date_added.desc())
+    elif sort == 'asc':
+        query = query.order_by(Product.current_price.asc())
+    elif sort == 'desc':
+        query = query.order_by(Product.current_price.desc())
+
+    courses = query.all()
     return render_template('all_courses.html', courses=courses,
                            cart=Cart.query.filter_by(customer_link=current_user.id).all()
                            if current_user.is_authenticated else [])
+
+@views.route('/chatbot', methods=['POST'])
+def chatbot():
+    # Lấy tin nhắn từ người dùng
+    data = request.get_json()
+    user_message = data.get('message', '').lower()
+
+    # Logic phản hồi nâng cấp với nhiều trường hợp
+    if any(keyword in user_message for keyword in ['chào', 'xin chào', 'halo', 'hello']):
+        reply = "Xin chào! Rất vui được trò chuyện với bạn. Bạn cần giúp gì hôm nay?"
+    elif any(keyword in user_message for keyword in ['khóa học', 'khoa hoc', 'course', 'hoc']):
+        reply = "Chúng tôi có rất nhiều khóa học hấp dẫn! Bạn có thể xem danh sách khóa học ở trang chủ (/) hoặc tại /all-courses. Bạn quan tâm đến khóa học nào? Nếu cần, hãy hỏi thêm về chi tiết!"
+    elif any(keyword in user_message for keyword in ['giá', 'gia', 'price', 'bao nhiêu', 'chi phí']):
+        reply = "Bạn có thể lọc khóa học theo giá ở thanh điều hướng trên cùng. Các mức giá bao gồm: dưới 50.000 VNĐ, 50.000 - 100.000 VNĐ, 100.000 - 200.000 VNĐ, và trên 200.000 VNĐ. Bạn muốn tìm khóa học trong khoảng giá nào? Hoặc hỏi cụ thể giá của khóa học nào đó!"
+    elif any(keyword in user_message for keyword in ['hỗ trợ', 'ho tro', 'help', 'giúp', 'support']):
+        reply = "Tôi sẵn sàng hỗ trợ bạn! Bạn có thể hỏi về khóa học, giá cả, cách mua hàng, hoặc bất kỳ vấn đề nào. Hãy cho tôi biết bạn cần gì nhé!"
+    elif any(keyword in user_message for keyword in ['mua', 'mua hàng', 'thanh toán', 'payment']):
+        reply = "Để mua khóa học, hãy thêm khóa học vào giỏ hàng (sử dụng nút 'Thêm giỏ hàng') và chọn 'Place Order' để thanh toán qua M-Pesa. Nếu cần hỗ trợ thanh toán, hãy cho tôi biết!"
+    elif any(keyword in user_message for keyword in ['liên hệ', 'contact', 'email', 'phone']):
+        reply = "Bạn có thể liên hệ với chúng tôi qua email: linhtrb0412@gmail.com hoặc gọi số hỗ trợ (giả định: 0909 123 456). Hãy cho tôi biết nếu bạn cần thêm thông tin!"
+    else:
+        reply = "Xin lỗi, tôi chưa hiểu ý bạn. Bạn có thể nói rõ hơn không? Dưới đây là một số gợi ý: hỏi về khóa học, giá cả, cách mua hàng, hỗ trợ, hoặc chào hỏi!"
+
+    # Trả về phản hồi dưới dạng JSON
+    return jsonify({'reply': reply})

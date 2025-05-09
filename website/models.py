@@ -10,8 +10,10 @@ class Customer(db.Model, UserMixin):
     password_hash = db.Column(db.String(150))
     date_joined = db.Column(db.DateTime(), default=datetime.utcnow)
 
+
     cart_items = db.relationship('Cart', backref=db.backref('customer', lazy=True))
     orders = db.relationship('Order', backref=db.backref('customer', lazy=True))
+
 
     @property
     def password(self):
@@ -35,6 +37,9 @@ class Product(db.Model):
     product_picture = db.Column(db.String(1000), nullable=False)
     flash_sale = db.Column(db.Boolean, default=False)
     date_added = db.Column(db.DateTime, default=datetime.utcnow)
+    description = db.Column(db.Text, nullable=True)
+    duration = db.Column(db.String(50), nullable=True)
+    video_url = db.Column(db.String(500), nullable=True)
 
     carts = db.relationship('Cart', backref=db.backref('product', lazy=True))
     orders = db.relationship('Order', backref=db.backref('product', lazy=True))
@@ -64,7 +69,4 @@ class Order(db.Model):
     # customer
     def __str__(self):
         return '<Order %r>' % self.id
-
-
-
 

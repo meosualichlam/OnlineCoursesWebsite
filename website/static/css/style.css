@@ -279,6 +279,26 @@ body {
   padding: 20px; /* Thêm khoảng cách cho văn bản */
   text-align: center;
 }
+
+@media (max-width: 768px) {
+    .carousel-inner {
+        height: 300px; /* Điều chỉnh chiều cao carousel cho màn hình nhỏ hơn */
+    }
+
+    .carousel-caption {
+        font-size: 0.8rem; /* Thu nhỏ chữ cho caption trên màn hình nhỏ */
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-inner {
+        height: 250px; /* Điều chỉnh chiều cao cho các màn hình rất nhỏ */
+    }
+
+    .carousel-caption {
+        font-size: 0.7rem; /* Giảm thêm kích thước chữ trên các thiết bị cực nhỏ */
+    }
+}
 /* CSS cho card nổi */
 .card.shadow-lg {
   width: 100%; /* Đảm bảo card chiếm toàn bộ chiều ngang */

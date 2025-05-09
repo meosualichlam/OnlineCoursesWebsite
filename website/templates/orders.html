@@ -1,74 +1,52 @@
 {% extends 'base.html' %}
 
-{% block title %} Orders {% endblock %}
+{% block title %}Orders{% endblock %}
 
 {% block body %}
-
-<div class="container my-5">
-
-    <div class="row">
+<div class="container-fluid py-5" style="background-color: #63b1f0;">
+    <div class="row justify-content-center">
         {% if orders %}
-
-        <h1 class="text-center mb-5" style="color: white;">Khóa học đã mua</h1>
-        <div class="col-sm-13">
-            <div class="card">
-                <div class="card-body">
-                    <!-- <h3>Orders</h3> -->
-                    {% for item in orders %}
-
-                    <div class="row">
-                        <div class="col-sm-3 text-center align-self-center">
-                            <img src="{{ item.product.product_picture }}" alt="" class="img-fluid img-thumbnail shadow-sm" height="150px" width="150px">
-                        </div>
-                        <div class="col-sm-7">
-                            
-                            <h3>{{ item.product.product_name }}</h3>
-                            <p class="mb-2 text-muted small">Giá: {{ item.price }} VNĐ</p>
-                               
-                                
-                            <div class="col-sm-4">
-                                <p>Trạng thái khóa học: {{ item.status }}</p>
-                                {% if item.status == 'Pending' %}
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 20%;"  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-
-                                {% elif item.status == 'Payment Received' %}
-                                <div class="progress">
-                                    <div class="progress-bar bg-info" role="progressbar" style="width: 40%;"  aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-
-                                {% elif item.status == 'Access Granted' %}
-                                <div class="progress">
-                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 70%;"  aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-
-                                {% elif item.status == 'Completed' %}
-                                <div class="progress">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%;"  aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-
-                                {% elif item.status == 'Canceled' %}
-                                <div class="progress">
-                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 100%;"  aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                {% endif %}
+            <h1 class="text-center mb-5 text-white pt-4">Khóa học đã mua</h1>
+            <div class="col-12 col-lg-10"> <!-- Updated column width -->
+                <div class="card shadow-sm" style="border-radius: 20px; padding: 20px; margin: 0 auto;">
+                    <div class="card-body">
+                        {% for item in orders %}
+                        <div class="row mb-5 align-items-center">
+                            <div class="col-12 col-sm-4 text-center mb-3 mb-sm-0">
+                                <img src="{{ item.product.product_picture }}" alt="{{ item.product.product_name }}"
+                                     class="img-fluid img-thumbnail shadow-sm" style="max-width: 100%; height: auto;"> <!-- Ensure image is responsive -->
                             </div>
-                            
+                            <div class="col-12 col-sm-8" style="padding-left: 20px;">
+                                <h5 class="mb-3">{{ item.product.product_name }}</h5>
+                                <p class="text-muted small mb-1">Giá: {{ item.price }} VNĐ</p>
+                                <p class="mb-2">Trạng thái khóa học: <strong>{{ item.status }}</strong></p>
+
+                                {% set progress_map = {
+                                    'Pending': (20, ''),
+                                    'Payment Received': (40, 'bg-info'),
+                                    'Access Granted': (70, 'bg-warning'),
+                                    'Completed': (100, 'bg-success'),
+                                    'Canceled': (100, 'bg-danger')
+                                } %}
+                                {% set progress = progress_map.get(item.status, (0, '')) %}
+
+                                <div class="progress">
+                                    <div class="progress-bar {{ progress[1] }}" role="progressbar"
+                                         style="width: {{ progress[0] }}%;"
+                                         aria-valuenow="{{ progress[0] }}" aria-valuemin="0" aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        <hr class="text-muted">
+                        {% endfor %}
                     </div>
-                    <hr class="text-muted">
-                    {% endfor %}
                 </div>
             </div>
-        </div>
-
         {% else %}
-        <h1 class="text-center mb-5" style="color: white;">Bạn không mua khóa học nào.</h1>
-
+            <h1 class="text-center mb-5 text-white">Bạn không mua khóa học nào.</h1>
         {% endif %}
     </div>
-
 </div>
 
 {% endblock %}

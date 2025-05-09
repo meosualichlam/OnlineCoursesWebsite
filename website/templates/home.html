@@ -219,7 +219,7 @@
                         <a href="/add-to-cart/{{ item.id }}" class="btn btn-sm btn-outline-primary w-100 mb-1">
                             <i class="bi bi-cart-plus"></i> Thêm giỏ hàng
                         </a>
-                        <a href="/all-courses" class="btn btn-sm btn-secondary w-100">
+                        <a href="/course-detail/{{ item.id }}" class="btn btn-sm btn-secondary w-100">
                             <i class="bi bi-info-circle"></i> Xem thông tin
                         </a>
                     </div>
@@ -233,87 +233,203 @@
     </div>
 </div>
 
+<!-- Chatbot container -->
+<div class="chatbot-container">
+    <!-- Nút mở chatbot -->
+    <div class="chatbot-toggle" onclick="toggleChatbot()">
+        <i class="bi bi-chat-dots-fill"></i>
+    </div>
 
-    <!-- <div class="row row-cols-1 row-cols-md-4 g-4">
-        <div class="col">
-            <div class="card product-card">
-                <img src="https://khokhoahoc.org/wp-content/uploads/2023/03/Share-Khoa-Hoc-Kiem-Tien-Voi-Top-Cong-Cu-AI-Hot-Nhat-Hien-Nay-510x287.png" class="card-img-top" alt="Khóa học 1">
-                <div class="card-body">
-                    <h5 class="card-title">Khóa Học Kiếm Tiền Với Top Công Cụ AI Hot Nhất Hiện Nay</h5>
-                    <p class="card-text text-muted">500,000 VNĐ</p>
-                </div>
+    <!-- Cửa sổ chatbot -->
+    <div class="chatbot-window" id="chatbotWindow" style="display: none;">
+        <div class="chatbot-header">
+            <h5>Chat với chúng tôi!</h5>
+            <button class="chatbot-close" onclick="toggleChatbot()">×</button>
+        </div>
+        <div class="chatbot-body" id="chatbotMessages">
+            <div class="chatbot-message bot-message">
+                Xin chào! Tôi có thể giúp gì cho bạn hôm nay?
             </div>
         </div>
-
-        <div class="col">
-            <div class="card product-card">
-                <img src="https://khokhoahoc.org/wp-content/uploads/2023/05/Chia-Se-Khoa-Hoc-Kinh-Te-Vi-Mo-MAI-AFA-510x287.png" class="card-img-top" alt="Khóa học 2">
-                <div class="card-body">
-                    <h5 class="card-title">Khóa Học Kinh Tế Vĩ Mô Ứng Dụng Trong Đầu Tư (MAI) AFA</h5>
-                    <p class="card-text text-muted">750,000 VNĐ</p>
-                </div>
-            </div>
+        <div class="chatbot-footer">
+            <input type="text" id="chatbotInput" placeholder="Nhập tin nhắn..." onkeypress="if(event.key === 'Enter') sendMessage()">
+            <button onclick="sendMessage()"><i class="bi bi-send"></i></button>
         </div>
+    </div>
+</div>
 
-        <div class="col">
-            <div class="card product-card">
-                <img src="https://khokhoahoc.org/wp-content/uploads/2023/05/2-510x287.png" class="card-img-top" alt="Khóa học 3">
-                <div class="card-body">
-                    <h5 class="card-title">Khóa Học Vẽ Tranh Bằng AI Midjourney – Ứng Dụng Trong Cuộc Sống</h5>
-                    <p class="card-text text-muted">300,000 VNĐ</p>
-                </div>
-            </div>
-        </div>
+<style>
+.chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
 
-        <div class="col">
-            <div class="card product-card">
-                <img src="https://khokhoahoc.org/wp-content/uploads/2023/03/Share-Combo-2-Lop-Hoc-Co-Ban-Den-Nang-Cao-Lam-Chu-ChatGPT-va-AI-Thuc-Chien-HocvienAI-510x265.png" class="card-img-top" alt="Khóa học 4">
-                <div class="card-body">
-                    <h5 class="card-title">Combo 2 Lớp Học Cơ Bản Đến Nâng Cao – Làm Chủ ChatGPT và AI Thực Chiến HocvienAI</h5>
-                    <p class="card-text text-muted">600,000 VNĐ</p>
-                </div>
-            </div>
-        </div>
+.chatbot-toggle {
+    background-color: #007bff;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
 
-        <div class="col">
-            <div class="card product-card">
-                <img src="https://khokhoahoc.org/wp-content/uploads/2023/05/Share-Khoa-Hoc-Cfa-Level-2-Online-Cua-Hedge-Academy-Tang-Khoa-Cfa-Level-1-510x510.png" class="card-img-top" alt="Khóa học 5">
-                <div class="card-body">
-                    <h5 class="card-title">Share Khóa Học Cfa Level 2 Online Cùng Hedge Academy (Tặng Khóa Cfa Level 1)</h5>
-                    <p class="card-text text-muted">800,000 VNĐ</p>
-                </div>
-            </div>
-        </div>
+.chatbot-window {
+    width: 350px;
+    height: 500px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+}
 
-        <div class="col">
-            <div class="card product-card">
-                <img src="https://hoanghamobile.com/tin-tuc/wp-content/uploads/2024/02/python-online.jpg" class="card-img-top" alt="Khóa học 6">
-                <div class="card-body">
-                    <h5 class="card-title">Khóa Học Lập Trình Python trong phát triển ứng dụng và phân tích dữ liệu</h5>
-                    <p class="card-tex text-muted">450,000 VNĐ</p>
-                </div>
-            </div>
-        </div>
+.chatbot-header {
+    background-color: #007bff;
+    color: white;
+    padding: 12px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        <div class="col">
-            <div class="card product-card">
-                <img src="https://khokhoahoc.org/wp-content/uploads/2022/11/Share-Khoa-SEO-Blueprint-Cua-GTVSEO-510x287.png" class="card-img-top" alt="Khóa học 6">
-                <div class="card-body">
-                    <h5 class="card-title">Khóa SEO Blueprint Của GTVSEO</h5>
-                    <p class="card-tex text-muted">250,000 VNĐ</p>
-                </div>
-            </div>
-        </div>
+.chatbot-header h5 {
+    margin: 0;
+    font-size: 16px;
+}
 
-        <div class="col">
-            <div class="card product-card">
-                <img src="https://khokhoahoc.org/wp-content/uploads/2024/06/Share-Khoa-Hoc-Money-Hacker-Club-Moi-Nhat-Cung-Hoang-Nam-MMO-510x287.png" class="card-img-top" alt="Khóa học 6">
-                <div class="card-body">
-                    <h5 class="card-title">Khóa Học Money Hacker Club Mới Nhất Cùng Hoàng Nam MMO</h5>
-                    <p class="card-tex text-muted">350,000 VNĐ</p>
-                </div>
-            </div>
-        </div>
-    </div> -->
+.chatbot-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.chatbot-body {
+    flex: 1; /* Chiếm toàn bộ không gian còn lại */
+    padding: 15px;
+    overflow-y: auto; /* Đảm bảo cuộn dọc */
+    border-bottom: 1px solid #ddd;
+    display: block; /* Sử dụng block thay vì flex để tránh xung đột bố cục */
+    max-height: 400px; /* Giới hạn chiều cao tối đa để cuộn */
+}
+
+.chatbot-message {
+    padding: 8px 12px;
+    border-radius: 15px;
+    max-width: 70%;
+    word-wrap: break-word;
+    line-height: 1.4;
+    margin-bottom: 10px; /* Khoảng cách giữa các tin nhắn */
+}
+
+.bot-message {
+    background-color: #f1f1f1;
+    color: #333;
+    align-self: flex-start;
+}
+
+.user-message {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-end;
+}
+
+.chatbot-footer {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    min-height: 50px; /* Đảm bảo footer không bị co lại quá nhỏ */
+}
+
+.chatbot-footer input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    margin-right: 10px;
+    outline: none;
+}
+
+.chatbot-footer button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+</style>
+
+<script>
+// Hàm mở/đóng chatbot
+function toggleChatbot() {
+    const chatbotWindow = document.getElementById('chatbotWindow');
+    chatbotWindow.style.display = chatbotWindow.style.display === 'none' ? 'block' : 'none';
+}
+
+// Hàm gửi tin nhắn
+function sendMessage() {
+    const input = document.getElementById('chatbotInput');
+    const message = input.value.trim();
+    if (!message) return;
+
+    // Hiển thị tin nhắn của người dùng
+    const messagesContainer = document.getElementById('chatbotMessages');
+    const userMessage = document.createElement('div');
+    userMessage.className = 'chatbot-message user-message';
+    userMessage.textContent = message;
+    messagesContainer.appendChild(userMessage);
+
+    // Xóa input và cuộn xuống tin nhắn mới nhất
+    input.value = '';
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+    // Gửi tin nhắn đến server và nhận phản hồi
+    fetch('/chatbot', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: JSON.stringify({ message: message })
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Hiển thị phản hồi từ bot
+        const botMessage = document.createElement('div');
+        botMessage.className = 'chatbot-message bot-message';
+        botMessage.textContent = data.reply;
+        messagesContainer.appendChild(botMessage);
+
+        // Cuộn xuống tin nhắn mới nhất
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    })
+    .catch(error => {
+        console.error('Lỗi khi gửi tin nhắn:', error);
+        const errorMessage = document.createElement('div');
+        errorMessage.className = 'chatbot-message bot-message';
+        errorMessage.textContent = 'Có lỗi xảy ra, vui lòng thử lại!';
+        messagesContainer.appendChild(errorMessage);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    });
+}
+</script>
 
 {% endblock %}

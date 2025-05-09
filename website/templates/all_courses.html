@@ -25,11 +25,11 @@
                 <a class="nav-link dropdown-toggle" href="#" id="priceFilterDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Lọc theo giá
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="priceFilterDropdown">
-                    <li><a class="dropdown-item" href="#">Dưới 50.000 VNĐ</a></li>
-                    <li><a class="dropdown-item" href="#">50.000 - 100.000 VNĐ</a></li>
-                    <li><a class="dropdown-item" href="#">100.000 - 200.000 VNĐ</a></li>
-                    <li><a class="dropdown-item" href="#">Trên 200.000 VNĐ</a></li>
+               <ul class="dropdown-menu" aria-labelledby="priceFilterDropdown">
+                    <li><a class="dropdown-item" href="{{ url_for('views.all_courses', price='lt50') }}">Dưới 50.000 VNĐ</a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('views.all_courses', price='50-100') }}">50.000 - 100.000 VNĐ</a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('views.all_courses', price='100-200') }}">100.000 - 200.000 VNĐ</a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('views.all_courses', price='gt200') }}">Trên 200.000 VNĐ</a></li>
                 </ul>
             </li>
             <!-- Sắp xếp dropdown -->
@@ -38,16 +38,16 @@
                     Sắp xếp
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="orderFilterDropdown">
-                    <li><a class="dropdown-item" href="#">Mới nhất</a></li>
-                    <li><a class="dropdown-item" href="#">Từ thấp đến cao</a></li>
-                    <li><a class="dropdown-item" href="#">Từ cao xuống thấp</a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('views.all_courses', sort='newest') }}">Mới nhất</a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('views.all_courses', sort='asc') }}">Từ thấp đến cao</a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('views.all_courses', sort='desc') }}">Từ cao xuống thấp</a></li>
                 </ul>
             </li>
         </ul>
     </div>
 </div>
+
 <div class="container mt-5">
-    <h2 class="mb-4 text-center">Tất cả các khóa học</h2>
     <div class="row">
         {% for course in courses %}
         <div class="col-md-4 mb-4">
@@ -57,7 +57,7 @@
                     <h5 class="card-title">{{ course.product_name }}</h5>
                     <p class="card-text text-muted">
                         Giá gốc: <del>{{ course.previous_price }}₫</del><br>
-                        Giá hiện tại: <strong class="text-danger">{{ course.current_price }}VNĐ</strong>
+                        Giá hiện tại: <strong class="text-danger">{{ course.current_price }} VNĐ</strong>
                     </p>
                     {% if course.flash_sale %}
                         <span class="badge bg-warning text-dark mb-2">Flash Sale</span>
